@@ -1,0 +1,121 @@
+[
+    {
+        "id": "1baeea43b0ba83f0",
+        "type": "inject",
+        "z": "3fbf4acc50dc9ef5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "5635bdc4f85f08f7",
+                "5fc1decb258bb708"
+            ]
+        ]
+    },
+    {
+        "id": "1ee22d8fa3ff8a7d",
+        "type": "debug",
+        "z": "3fbf4acc50dc9ef5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "5635bdc4f85f08f7",
+        "type": "function",
+        "z": "3fbf4acc50dc9ef5",
+        "name": "",
+        "func": "\n// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 200,
+        "wires": [
+            [
+                "1ee22d8fa3ff8a7d",
+                "1596fef5fef62243"
+            ]
+        ]
+    },
+    {
+        "id": "1596fef5fef62243",
+        "type": "ui_text",
+        "z": "3fbf4acc50dc9ef5",
+        "group": "5f92add2b4de547a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "La hora es",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "5fc1decb258bb708",
+        "type": "debug",
+        "z": "3fbf4acc50dc9ef5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "5f92add2b4de547a",
+        "type": "ui_group",
+        "name": "Hora grupo",
+        "tab": "4dbedd3de196b5d6",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4dbedd3de196b5d6",
+        "type": "ui_tab",
+        "name": "Hora pestaña",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
